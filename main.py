@@ -327,7 +327,7 @@ class App(tk.Tk):
                     )
                     if file_path:
                         try:
-                            with open(file_path, "w", encoding="utf-8", newline="\n") as f:
+                            with open(file_path, "w", encoding="utf-8") as f:
                                 f.write(content)
                             self.log(f"Conteúdo salvo em: {file_path}")
                         except Exception as e:
@@ -999,10 +999,7 @@ class App(tk.Tk):
         return s
 
     def _normalize_for_clipboard(self, s):
-        t = self._normalize_newlines(s)
-        if os.name == "nt":
-            t = t.replace("\n", "\r\n")
-        return t
+        return self._normalize_newlines(s)
 
 
 def main():
