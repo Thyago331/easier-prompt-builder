@@ -41,6 +41,13 @@ SKIP_DIRS = {
 }
 
 
+
+def rp(p):
+    if getattr(sys, "frozen", False):
+        return os.path.join(sys._MEIPASS, p)
+    return p
+
+
 def now_hhmmss():
     return time.strftime("%H:%M:%S")
 
@@ -139,6 +146,15 @@ class App(tk.Tk):
     def __init__(self):
         tk.Tk.__init__(self)
         self.title(APP_TITLE)
+        
+        try:
+            self.iconbitmap(rp("assets/app.ico"))         
+        except Exception:
+            try:
+                self.iconphoto(False, tk.PhotoImage(file=rp("assets/app-32x32.png")))  #
+            except Exception:
+                pass
+
         self.geometry("1200x700")
         self.minsize(1000, 600)
 

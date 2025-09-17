@@ -61,7 +61,8 @@ A janela **easier-prompt-builder** abrirá.
 2. Gerar o executável:
 
    ```bash
-   pyinstaller --noconsole --onefile --name easier-prompt-builder main.py
+   python -m PyInstaller --noconsole --onefile --name easier-prompt-builder --icon assets/app.ico --add-data "assets/app.ico;assets" --add-data "assets/app-16x16.png;assets" --add-data "assets/app-32x32.png;assets" main.py
+
    ```
 3. O `.exe` ficará em `dist/easier-prompt-builder.exe`.
 
